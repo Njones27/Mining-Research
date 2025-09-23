@@ -79,7 +79,7 @@ void loop() {
     if (Serial.available()) {
         String cmd = Serial.readStringUntil('\n');
         cmd.trim(); cmd.toLowerCase();
-        if (cmd == "emergencystop") {
+        if (cmd == "stop") {
             stepperY.stop();
             stepperX.stop();
             autoRunning = false;
