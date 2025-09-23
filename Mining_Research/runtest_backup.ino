@@ -1,6 +1,6 @@
 #include "AccelStepper.h"
 #include <SoftwareSerial.h>
-#include "Movement.h"
+#include "Classes/Movement.h"
 
 // Define pins
 #define Y_STEP_PIN 6    // Vertical (up/down)
