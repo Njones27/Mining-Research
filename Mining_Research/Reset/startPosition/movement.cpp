@@ -7,7 +7,7 @@
 
 extern AccelStepper stepperY;
 extern AccelStepper stepperX;
-extern const long deltaSteps; // TODO: Get rid of this eventually
+extern const long deltaSteps;
 
 void Movement::moveYDown(int steps) {
     stepperY.moveTo(stepperY.currentPosition() + steps * deltaSteps);
