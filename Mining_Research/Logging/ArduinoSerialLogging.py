@@ -1,13 +1,16 @@
 import csv
 import time
 from datetime import datetime
+from pathlib import Path
 
 import serial
 
 # Configure serial connection
 SERIAL_PORT = '/dev/cu.usbmodem101'  # Set this to the correct port on the target machine
 BAUD_RATE = 115200
-CSV_FILENAME = f'sensor_data_{datetime.now().strftime("%Y%m%d_%H%M%S")}.csv'
+LOG_DIR = Path(__file__).resolve().parent / "logs"
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+CSV_FILENAME = LOG_DIR / f'sensor_data_{datetime.now().strftime("%Y%m%d_%H%M%S")}.csv'
 
 
 def log_to_csv():
