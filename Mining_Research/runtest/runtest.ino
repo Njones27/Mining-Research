@@ -149,7 +149,7 @@ void loop() {
                 case 16: movement.moveYUp(10); break;
                 case 17: movement.moveXLeft(40); break;
                 case 18: movement.moveYUp(10); break;
-                case 19 movement.moveXRight(40); break;
+                case 19: movement.moveXRight(40); break;
 
                 default:
                     hasMoved = true;
