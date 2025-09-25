@@ -127,15 +127,15 @@ void loop() {
     if (autoRunning && !hasMoved && stepperY.distanceToGo() == 0 && stepperX.distanceToGo() == 0) {
         // 10 steps = 1.25", so 1 step = 1/8"
             switch (moveState) {
-                case 0: movement.moveYDown(20); break;
-                case 1: movement.moveXLeft(20); break;
-                case 2: movement.moveYUp(20); break;
-                case 3: movement.moveXLeft(20); break;
-                case 4: movement.moveYDown(20); break;
-                case 5: movement.moveXLeft(20); break;
-                case 6: movement.moveYUp(20); break;
-                case 7: movement.moveYDown(20); break;
-                case 8: movement.moveXLeft(20); break;
+                case 0: movement.moveYDown(30); break;
+                case 1: movement.moveXLeft(30); break;
+                case 2: movement.moveYUp(30); break;
+                case 3: movement.moveXLeft(30); break;
+                case 4: movement.moveYDown(30); break;
+                case 5: movement.moveXLeft(30); break;
+                case 6: movement.moveYUp(30); break;
+                case 7: movement.moveYDown(30); break;
+                case 8: movement.moveXLeft(30); break;
                 default:
                     hasMoved = true;
                     Serial.println("Test done");
