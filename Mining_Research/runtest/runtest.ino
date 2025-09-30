@@ -128,28 +128,28 @@ void loop() {
         // 10 steps = 1.25", so 1 step = 1/8"
             switch (moveState) {
                 // Left to right sweep
-                case 0: movement.moveYDown(40); break;
-                case 1: movement.moveXLeft(20); break;
-                case 2: movement.moveYUp(40); break;
-                case 3: movement.moveXLeft(20); break;
-                case 4: movement.moveYDown(40); break;
-                case 5: movement.moveXLeft(20); break;
-                case 6: movement.moveYUp(40); break;
-                case 7: movement.moveXLeft(20); break;
-                case 8: movement.moveYDown(40); break;
-                case 9: movement.moveXLeft(20); break;
+                case 0: movement.moveYDown(100); break;
+                case 1: movement.moveXLeft(21); break;
+                case 2: movement.moveYUp(100); break;
+                case 3: movement.moveXLeft(21); break;
+                case 4: movement.moveYDown(100); break;
+                case 5: movement.moveXLeft(21); break;
+                case 6: movement.moveYUp(100); break;
+                case 7: movement.moveXLeft(21); break;
+                case 8: movement.moveYDown(100); break;
+                case 9: movement.moveXLeft(21); break;
 
                 // Bottom to top sweep
                 case 10: movement.moveYUp(20); break;
-                case 11: movement.moveXRight(40); break;
+                case 11: movement.moveXRight(102); break;
                 case 12: movement.moveYUp(20); break;
-                case 13: movement.moveXLeft(40); break;
+                case 13: movement.moveXLeft(102); break;
                 case 14: movement.moveYUp(20); break;
-                case 15: movement.moveXRight(40); break;
+                case 15: movement.moveXRight(102); break;
                 case 16: movement.moveYUp(20); break;
-                case 17: movement.moveXLeft(40); break;
+                case 17: movement.moveXLeft(102); break;
                 case 18: movement.moveYUp(20); break;
-                case 19: movement.moveXRight(40); break;
+                case 19: movement.moveXRight(102); break;
 
                 default:
                     hasMoved = true;
