@@ -31,29 +31,29 @@ bool loggingActive = false;
 bool autoRunning = false;
 
 // Read lidar
-uint16_t readTFmini(SoftwareSerial &lidarSerial) {
-  const uint8_t frameLength = 9;
-  uint16_t distance = 0;
-  if (lidarSerial.available() >= frameLength) {
-    while (lidarSerial.available()) {
-      if (lidarSerial.read() == 0x59 && lidarSerial.read() == 0x59) {
-        uint8_t frame[frameLength];
-        frame[0] = 0x59; frame[1] = 0x59;
-        for (int i = 2; i < frameLength; i++) {
-          while (!lidarSerial.available());
-          frame[i] = lidarSerial.read();
-        }
-        uint8_t checksum = 0;
-        for (int i = 0; i < 8; i++) checksum += frame[i];
-        if (checksum == frame[8]) {
-          distance = frame[2] | (frame[3] << 8);
-          return distance;
-        }
-      }
-    }
-  }
-  return distance;
-}
+//uint16_t readTFmini(SoftwareSerial &lidarSerial) {
+//  const uint8_t frameLength = 9;
+//  uint16_t distance = 0;
+//  if (lidarSerial.available() >= frameLength) {
+//    while (lidarSerial.available()) {
+//      if (lidarSerial.read() == 0x59 && lidarSerial.read() == 0x59) {
+//        uint8_t frame[frameLength];
+//        frame[0] = 0x59; frame[1] = 0x59;
+//        for (int i = 2; i < frameLength; i++) {
+//          while (!lidarSerial.available());
+//          frame[i] = lidarSerial.read();
+//        }
+//        uint8_t checksum = 0;
+//        for (int i = 0; i < 8; i++) checksum += frame[i];
+//        if (checksum == frame[8]) {
+//          distance = frame[2] | (frame[3] << 8);
+//          return distance;
+//        }
+//      }
+//    }
+//  }
+//  return distance;
+//}
 
 void setup() {
   Serial.begin(9600);
@@ -89,24 +89,24 @@ void loop() {
     }
 
     // Periodic sensor & position read
-    unsigned long now = millis();
-    if (now - lastSensorRead >= sensorInterval) {
-        lastSensorRead = now;
-        xLidarSerial.listen(); delay(2);
-        uint16_t tmpX = readTFmini(xLidarSerial);
-        if (tmpX) xLidarDistance = tmpX;
-        yLidarSerial.listen(); delay(2);
-        uint16_t tmpY = readTFmini(yLidarSerial);
-        if (tmpY) yLidarDistance = tmpY;
-
-        if (loggingActive) {
-            Serial.print(now); Serial.print(',');
-            Serial.print(stepperX.currentPosition()); Serial.print(',');
-            Serial.print(stepperY.currentPosition()); Serial.print(',');
-            Serial.print(xLidarDistance); Serial.print(',');
-            Serial.println(yLidarDistance);
-        }
-    }
+//    unsigned long now = millis();
+//    if (now - lastSensorRead >= sensorInterval) {
+//        lastSensorRead = now;
+//        xLidarSerial.listen(); delay(2);
+//        uint16_t tmpX = readTFmini(xLidarSerial);
+//        if (tmpX) xLidarDistance = tmpX;
+//        yLidarSerial.listen(); delay(2);
+//        uint16_t tmpY = readTFmini(yLidarSerial);
+//        if (tmpY) yLidarDistance = tmpY;
+//
+//        if (loggingActive) {
+//            Serial.print(now); Serial.print(',');
+//            Serial.print(stepperX.currentPosition()); Serial.print(',');
+//            Serial.print(stepperY.currentPosition()); Serial.print(',');
+//            Serial.print(xLidarDistance); Serial.print(',');
+//            Serial.println(yLidarDistance);
+//        }
+//    }
 
     // Run steppers
     stepperY.run();
@@ -128,28 +128,28 @@ void loop() {
         // 10 steps = 1.25", so 1 step = 1/8"
             switch (moveState) {
                 // Left to right sweep
-                case 0: movement.moveYDown(90); break;
+                case 0: movement.moveYDown(40); break;
                 case 1: movement.moveXLeft(20); break;
-                case 2: movement.moveYUp(90); break;
+                case 2: movement.moveYUp(40); break;
                 case 3: movement.moveXLeft(20); break;
-                case 4: movement.moveYDown(90); break;
+                case 4: movement.moveYDown(40); break;
                 case 5: movement.moveXLeft(20); break;
-                case 6: movement.moveYUp(90); break;
+                case 6: movement.moveYUp(40); break;
                 case 7: movement.moveXLeft(20); break;
-                case 8: movement.moveYDown(90); break;
+                case 8: movement.moveYDown(40); break;
                 case 9: movement.moveXLeft(20); break;
 
                 // Bottom to top sweep
                 case 10: movement.moveYUp(20); break;
-                case 11: movement.moveXRight(90); break;
+                case 11: movement.moveXRight(40); break;
                 case 12: movement.moveYUp(20); break;
-                case 13: movement.moveXLeft(90); break;
+                case 13: movement.moveXLeft(40); break;
                 case 14: movement.moveYUp(20); break;
-                case 15: movement.moveXRight(90); break;
+                case 15: movement.moveXRight(40); break;
                 case 16: movement.moveYUp(20); break;
-                case 17: movement.moveXLeft(90); break;
+                case 17: movement.moveXLeft(40); break;
                 case 18: movement.moveYUp(20); break;
-                case 19: movement.moveXRight(90); break;
+                case 19: movement.moveXRight(40); break;
 
                 default:
                     hasMoved = true;
