@@ -8,7 +8,6 @@
 
 class Movement {
     public:
-        void moveZDown(int steps);
         void moveYDown(int steps);
         void moveYUp(int steps);
         void moveXLeft(int steps);
