@@ -141,15 +141,15 @@ void loop() {
 
                 // Bottom to top sweep
                 case 10: movement.moveYUp(20); break;
-                case 11: movement.moveXRight(102); break;
+                case 11: movement.moveXRight(103); break;
                 case 12: movement.moveYUp(20); break;
-                case 13: movement.moveXLeft(102); break;
+                case 13: movement.moveXLeft(103); break;
                 case 14: movement.moveYUp(20); break;
-                case 15: movement.moveXRight(102); break;
+                case 15: movement.moveXRight(103); break;
                 case 16: movement.moveYUp(20); break;
-                case 17: movement.moveXLeft(102); break;
+                case 17: movement.moveXLeft(103); break;
                 case 18: movement.moveYUp(20); break;
-                case 19: movement.moveXRight(102); break;
+                case 19: movement.moveXRight(103); break;
 
                 default:
                     hasMoved = true;
