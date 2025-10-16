@@ -30,31 +30,6 @@ const unsigned int sensorInterval = 100;
 bool loggingActive = false;
 bool autoRunning = false;
 
-// Read lidar
-//uint16_t readTFmini(SoftwareSerial &lidarSerial) {
-//  const uint8_t frameLength = 9;
-//  uint16_t distance = 0;
-//  if (lidarSerial.available() >= frameLength) {
-//    while (lidarSerial.available()) {
-//      if (lidarSerial.read() == 0x59 && lidarSerial.read() == 0x59) {
-//        uint8_t frame[frameLength];
-//        frame[0] = 0x59; frame[1] = 0x59;
-//        for (int i = 2; i < frameLength; i++) {
-//          while (!lidarSerial.available());
-//          frame[i] = lidarSerial.read();
-//        }
-//        uint8_t checksum = 0;
-//        for (int i = 0; i < 8; i++) checksum += frame[i];
-//        if (checksum == frame[8]) {
-//          distance = frame[2] | (frame[3] << 8);
-//          return distance;
-//        }
-//      }
-//    }
-//  }
-//  return distance;
-//}
-
 void setup() {
   Serial.begin(9600);
   yLidarSerial.begin(9600);
@@ -88,37 +63,9 @@ void loop() {
         }
     }
 
-    // Periodic sensor & position read
-//    unsigned long now = millis();
-//    if (now - lastSensorRead >= sensorInterval) {
-//        lastSensorRead = now;
-//        xLidarSerial.listen(); delay(2);
-//        uint16_t tmpX = readTFmini(xLidarSerial);
-//        if (tmpX) xLidarDistance = tmpX;
-//        yLidarSerial.listen(); delay(2);
-//        uint16_t tmpY = readTFmini(yLidarSerial);
-//        if (tmpY) yLidarDistance = tmpY;
-//
-//        if (loggingActive) {
-//            Serial.print(now); Serial.print(',');
-//            Serial.print(stepperX.currentPosition()); Serial.print(',');
-//            Serial.print(stepperY.currentPosition()); Serial.print(',');
-//            Serial.print(xLidarDistance); Serial.print(',');
-//            Serial.println(yLidarDistance);
-//        }
-//    }
-
     // Run steppers
     stepperY.run();
     stepperX.run();
-
-//    // Single movement
-//    static bool hasMoved = false;
-//    if (autoRunning && !hasMoved && stepperY.distanceToGo() == 0) {
-//        movement.moveYDown(10); // 10 steps = 1.25", so 1 step = 1/8"
-//        hasMoved = true;
-//        Serial.println("Test done");
-//    }
 
     // Continuous movement
     static bool hasMoved = false;
