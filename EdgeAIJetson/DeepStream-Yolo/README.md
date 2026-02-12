@@ -260,6 +260,22 @@ NVIDIA DeepStream SDK 8.0 / 7.1 / 7.0 / 6.4 / 6.3 / 6.2 / 6.1.1 / 6.1 / 6.0.1 / 
 
 ### Basic usage
 
+## If running on Jetson Orin Nano or AGX Orin you can simply follow 2 steps
+
+#### 1. Download the repo
+```
+git clone https://github.com/marcoslucianops/DeepStream-Yolo.git
+cd DeepStream-Yolo
+```
+
+#### 2. Run this command:
+```
+deepstream-app -C deepstream_app_config.txt
+```
+#### This will allow you to use your camera on `/dev/video0` to track objects listed in `labels.txt`
+
+## Otherwise:
+
 #### 1. Download the repo
 
 ```
